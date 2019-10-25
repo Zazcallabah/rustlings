@@ -5,27 +5,28 @@
 // Scroll down for hints :)
 
 pub fn pop_too_much() -> bool {
-    let mut list = vec![3];
+	let mut list = vec![3];
 
-    let last = list.pop().unwrap();
-    println!("The last item in the list is {:?}", last);
+	let last = list.pop().unwrap();
+	println!("The last item in the list is {:?}", last);
 
-    let second_to_last = list.pop().unwrap();
-    println!(
-        "The second-to-last item in the list is {:?}",
-        second_to_last
-    );
-    true
+	if let Some(second_to_last) = list.pop() {
+		println!(
+			"The second-to-last item in the list is {:?}",
+			second_to_last
+		);
+	}
+	true
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn should_not_panic() {
-        assert!(pop_too_much(), true);
-    }
+	#[test]
+	fn should_not_panic() {
+		assert!(pop_too_much());
+	}
 }
 
 
